@@ -48,7 +48,9 @@ bedtools makewindows -g mat.v0.8.genome.size  -w 500000 -s 500000 > mat.genome.5
 cat chr*/*.var.txt |grep -v '^R' >autosome.allvar.txt
 cat chr*/*.var.bed.merge > autosome.allvar.bed
 bedtools coverage -a ../2.collect/mat.genome.500k.bed -b autosome.allvar.bed > autosome.500k.allvar.cov
-python3 /bin/makeGFA_from_Bed.py autosome.500k.allvar.cov 0.0004 > autosome.500k.allvar.0.0004.ab.gfa
+
+# h=0.0004 is the threshold to assign block to homo-(single path with grey color) or heter- (doble paths with other colors)
+python3 /bin/makeGFA_from_VARcov.py autosome.500k.allvar.cov 0.0004 > autosome.500k.allvar.0.0004.ab.gfa
 
 # then visualize autosome.500k.allvar.0.0004.ab.gfa using Bandage
 ```
