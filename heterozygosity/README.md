@@ -8,6 +8,12 @@
 - paftools
 - Bandage
 
+
+
+you can use different variant set as input to visualize the heterozygous blocks bewteen two haploytypes.
+
+
+
 ```shell
 # MF2v0.8. maske cent
 mat_fa=xxx/v0.8/MF2_mat.v0.8.fasta
@@ -37,6 +43,8 @@ done
 
 cut -f 1,2 xxx/v0.8/MF2_mat.v0.8.fasta.fai > mat.v0.8.genome.size
 bedtools makewindows -g mat.v0.8.genome.size  -w 500000 -s 500000 > mat.genome.500k.bed
+
+### all kinds of variants
 cat chr*/*.var.txt |grep -v '^R' >autosome.allvar.txt
 cat chr*/*.var.bed.merge > autosome.allvar.bed
 bedtools coverage -a ../2.collect/mat.genome.500k.bed -b autosome.allvar.bed > autosome.500k.allvar.cov
@@ -45,3 +53,16 @@ python3 /bin/makeGFA_from_Bed.py autosome.500k.allvar.cov 0.0004 > autosome.500k
 # then visualize autosome.500k.allvar.0.0004.ab.gfa using Bandage
 ```
 
+
+
+### examples 
+
+using all variants, calculate the coverage of variants (i.e. SV count by its length)
+
+![all variants](chromosome_het_VARcov.png)
+
+
+
+only using SV, calculate the count of SV (i.e. one SV count to 1)
+
+![png](chromosome_het_SVcount.png)
