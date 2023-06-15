@@ -67,4 +67,4 @@ using all variants, calculate the coverage of variants (i.e. SV count by its len
 
 only using SV, calculate the count of SV (i.e. one SV count to 1)
 
-![png](chromosome_het_SVcount.png)
+![only SV](chromosome_het_SVcount.png)
